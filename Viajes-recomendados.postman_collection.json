@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "df53010b-a55a-4e03-89b9-f5200937d02a",
+		"name": "Viajes-recomendados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24890793"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"willy\",\n    \"email\": \"willy@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/register",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"willy@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Email o Username",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newEmail\": \"lourdes@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Contraseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"lourdes@gmail.com\",\n    \"newPass\": \"123456\",\n    \"confirmNewPass\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/password",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/D:/Descargas/image.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/users/avatar",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Nueva Publicación",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Sevilla tiene un color especial\",\n    \"category\": \"Ciudad\",\n    \"place\": \"Sevilla\",\n    \"description\": \"La mejor feria de andalucía\",\n    \"text\": \"Desde su creación, la feria tuvo un marcado carácter mercantil ganadero y agrícola.​ Los comerciantes llegaban al evento con su ganado y lo dejaba en distintas zonas según el año: la dehesa de Tablada, la finca de la Isabela o el prado de Santa Justa. La feria-mercado se celebraba en el Prado de San Sebastián.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/publication/new",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publication",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir Foto de Publicación",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "publicationPhoto",
+									"type": "file",
+									"src": "/D:/Descargas/que-ver-en-ronda.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/publications/1/photo",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications",
+								"1",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicación",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/publications/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Publicaciones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/publications?search=ronda",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications"
+							],
+							"query": [
+								{
+									"key": "order by",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "ronda"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalle Publicación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/publications/3",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favoritos",
+			"item": [
+				{
+					"name": "Añadir Publicación Fav",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/publications/3/like",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications",
+								"3",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicación Fav",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/publications/2/like",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"publications",
+								"2",
+								"like"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token2",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token3",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token4",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
