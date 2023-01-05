@@ -1,5 +1,5 @@
 const getDB = require('./getDB');
-
+const bcrypt = require('bcrypt');
 async function main() {
     let connection;
 
@@ -68,7 +68,10 @@ async function main() {
 
         await connection.query(
             `INSERT INTO user (username, email, password)
-             VALUES ('userPrueba', 'prueba@gmail.com', '123')`
+             VALUES ('userPrueba', 'prueba@gmail.com', '${await bcrypt.hash(
+                 '123',
+                 10
+             )}')`
         );
 
         await connection.query(

@@ -17,7 +17,7 @@ const newPublication = async (req, res, next) => {
         await connection.query(
             `
             INSERT INTO publication(title, category, place, description, text, idUser)
-            VALUES (?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?)
         `,
             [title, category, place, description, text, idUserAuth]
         );

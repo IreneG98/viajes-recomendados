@@ -16,20 +16,30 @@ const listPublications = async (req, res, next) => {
 
         const orderDirection = validDirectionOptions.includes(direction)
             ? direction
-            : 'ASC';
+            : 'DESC';
 
         let publications;
 
         if (search) {
             [publications] = await connection.query(
-                `SELECT * FROM publication
-                WHERE category = ? OR place LIKE ?
+                `SELECT p.*,
+                count(u.id) as likes
+                            FROM publication p
+                            left JOIN user_like_publication u
+                            ON p.id = u.idPublication
+                            WHERE category = ? OR place LIKE ?
+                            GROUP BY p.id 
                  ORDER BY ${orderBy} ${orderDirection}`,
-                [`%${search}%`]
+                [search, `%${search}%`]
             );
         } else {
             [publications] = await connection.query(
-                `SELECT * FROM publication
+                `SELECT p.*,
+                count(u.id) as likes
+                            FROM publication p
+                            left JOIN user_like_publication u
+                            ON p.id = u.idPublication
+                            GROUP BY p.id 
                 ORDER BY ${orderBy} ${orderDirection}`
             );
         }

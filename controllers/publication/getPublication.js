@@ -9,36 +9,33 @@ const getPublication = async (req, res, next) => {
 
         const { idPublication } = req.params;
 
-        const [publication] = await connection.query(
-            `SELECT *,
-            COUNT(idPublication) as likes
+        const [publications] = await connection.query(
+            `SELECT p.*,
+            COUNT(u.id) as likes
             FROM publication p
-            JOIN user_like_publication u
+            left JOIN user_like_publication u
             ON p.id = u.idPublication
-            WHERE idPublication = ?;`,
+            WHERE p.id = ?;`,
             [idPublication]
         );
 
-        if (publication.length < 1) {
+        if (publications.length < 1) {
             throw generateError(
                 `La publicación con id ${idUser} no existe.`,
                 404
             );
         }
 
-        const responseUser = {
-            title: publication[0].title,
-            category: publication[0].category,
-            place: publication[0].place,
-            description: publication[0].description,
-            text: publication[0].text,
-            photo: publication[0].photo || '',
-            likes: publication[0].likes || '0',
-        };
+        const [photos] = await connection.query(
+            `SELECT id, name FROM publication_photo
+            WHERE idPublication = ?`,
+            [publications[0].id]
+        );
+        const publication = { ...publications[0], photos };
 
         res.send({
             status: 'Ok',
-            publication: responseUser,
+            publication,
         });
     } catch (error) {
         next(error);
