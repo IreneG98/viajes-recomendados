@@ -13,4 +13,4 @@ USUARIOS REGISTRADOS:
 ○ Gestión del perfil (con posibilidad de añadir a los campos de registro una foto
 de perfil).✅
 ○ Borrar sus recomendaciones.✅
-○ Publicar comentarios en las recomendaciones.
+○ Publicar comentarios en las recomendaciones.✅

@@ -31,7 +31,14 @@ const getPublication = async (req, res, next) => {
             WHERE idPublication = ?`,
             [publications[0].id]
         );
-        const publication = { ...publications[0], photos };
+
+        const [comments] = await connection.query(
+            `SELECT idUser, comment FROM user_comment_publication
+            WHERE idPublication = ?`,
+            [publications[0].id]
+        );
+
+        const publication = { ...publications[0], photos, comments };
 
         res.send({
             status: 'Ok',

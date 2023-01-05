@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"willy\",\n    \"email\": \"willy@gmail.com\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"username\": \"lourdes\",\n    \"email\": \"lourdes@gmail.com\",\n    \"password\": \"123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,7 +49,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"willy@gmail.com\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"email\": \"lourdes@gmail.com\",\n    \"password\": \"123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -252,13 +252,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{server}}/publications/4",
+							"raw": "{{server}}/publications/1",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"publications",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -282,7 +282,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/publications?search=ronda",
+							"raw": "{{server}}/publications?search=",
 							"host": [
 								"{{server}}"
 							],
@@ -297,7 +297,7 @@
 								},
 								{
 									"key": "search",
-									"value": "ronda"
+									"value": ""
 								}
 							]
 						}
@@ -310,13 +310,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server}}/publications/3",
+							"raw": "{{server}}/publications/1",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"publications",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -339,13 +339,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{server}}/publications/3/like",
+							"raw": "{{server}}/publications/2/like",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"publications",
-								"3",
+								"2",
 								"like"
 							]
 						}
@@ -374,6 +374,19 @@
 								"like"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Nuevo comentario",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

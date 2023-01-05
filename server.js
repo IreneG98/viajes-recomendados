@@ -117,6 +117,19 @@ app.post('/publications/:idPublication/like', isAuth, addFavPublication);
 // Eliminar una publicación de favoritos
 app.delete('/publications/:idPublication/like', isAuth, deleteFavPublication);
 
+/* 
+    ####################################
+    ### Controladores de Comentarios ###
+    ####################################
+*/
+const newComment = require('./controllers/comments/newComment');
+/* 
+    ################################
+    ### Endpoints de Comentarios ###
+    ################################
+*/
+app.post('/publications/:idPublication/comment', isAuth, newComment);
+
 // Middleware de Error
 app.use((error, req, res, _) => {
     console.error(error);

@@ -62,6 +62,18 @@ async function main() {
             )`
         );
 
+        await connection.query(
+            `CREATE TABLE IF NOT EXISTS user_comment_publication(
+                id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                comment VARCHAR(500) NOT NULL,
+                idUser INT UNSIGNED NOT NULL,
+                idPublication INT UNSIGNED NOT NULL,
+                addDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (idUser) REFERENCES user (id),
+                FOREIGN KEY (idPublication) REFERENCES publication (id)
+            )`
+        );
+
         console.log('¡Tablas creadas!');
 
         console.log('Insertando unos datos de prueba...');
