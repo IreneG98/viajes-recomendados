@@ -65,7 +65,7 @@ async function main() {
         await connection.query(
             `CREATE TABLE IF NOT EXISTS user_comment_publication(
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-                comment VARCHAR(500) NOT NULL,
+                comment VARCHAR(500) DEFAULT '' NOT NULL,
                 idUser INT UNSIGNED NOT NULL,
                 idPublication INT UNSIGNED NOT NULL,
                 addDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
